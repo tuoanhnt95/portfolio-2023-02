@@ -1,85 +1,46 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="bg-black text-yellow-500">
+    <Menu />
+    <header class="border border-indigo-500 h-64">
+      <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
+      <div id="img-banner" class="bg-[url('src/assets/images/sideface.JPG')] bg-cover bg-center flex justify-end m-0 pr-2">
+        <div class="absolute mt-16 border border-indigo-500">
+          <p class="text-2xl font-black">Oanh</p>
+          <p>Full-stack developer</p>
+          <button class="border border-yellow-400" @click="toggleContactForm()">Hire me!</button>
+        </div>
+      </div>
+    </header>
+    <ContactForm v-if="contactFormIsShowed"/>
+    <TechStack />
+    <Projects />
+    <Footer />
+  </div>
 </template>
 
+<script setup lang="ts">
+// import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+import Menu from './components/Menu.vue'
+import TechStack from './components/TechStack.vue'
+import ContactForm from './components/ContactForm.vue'
+import Projects from './components/Projects.vue'
+import Footer from './components/Footer.vue'
+
+let contactFormIsShowed = ref(false);
+const toggleContactForm = () => {
+  contactFormIsShowed.value = !contactFormIsShowed.value;
+  console.log(contactFormIsShowed.value);
+}
+
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+#img-banner {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 </style>

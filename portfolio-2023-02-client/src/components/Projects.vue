@@ -5,7 +5,7 @@
       </div>
       <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div v-for="(project, i) in projects" :key="i">
-          <div class="img-project" :style="{ backgroundImage: `url(${ 'src/images/' + project.image})`}"></div>
+          <div class="img-project" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}"></div>
           <div>{{ project.name }}</div>
           <div class="font-sans" >{{ project.stack }}</div>
         </div>
