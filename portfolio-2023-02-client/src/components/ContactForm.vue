@@ -9,7 +9,12 @@
                 <input type="text" id="name" name="name"><br><br>
                 <label for="name">Message:</label>    
                 <input type="text" id="name" name="name"><br><br>
-                <input type="subm
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</template>
+
 <script setup lang="ts">
 </script>
 
