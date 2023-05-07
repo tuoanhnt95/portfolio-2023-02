@@ -11,7 +11,7 @@
         </div>
       </div>
     </header>
-    <ContactForm v-if="contactFormIsShowed"/>
+    <ContactForm v-if="contactFormIsShown" @toggle-form="toggleContactForm()"/>
     <TechStack />
     <Projects />
     <Footer />
@@ -27,10 +27,10 @@ import ContactForm from './components/ContactForm.vue'
 import Projects from './components/Projects.vue'
 import Footer from './components/Footer.vue'
 
-let contactFormIsShowed = ref(false);
+let contactFormIsShown = ref(false);
 const toggleContactForm = () => {
-  contactFormIsShowed.value = !contactFormIsShowed.value;
-  console.log(contactFormIsShowed.value);
+  contactFormIsShown.value = !contactFormIsShown.value;
+  console.log(contactFormIsShown.value);
 }
 
 </script>
