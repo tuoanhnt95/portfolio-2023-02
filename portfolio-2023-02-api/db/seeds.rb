@@ -7,7 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Contact.create(
-    email: "myspamvn@yahool.com",   # This is a string
-    subject: "Collaboration with me!",   # This is a string
-    message: "Hello, Oanh! Love the profile. You want collaboration? Let's have a call."   # This is a string
+  name: "John",
+  email: "myspamvn@yahool.com",   # This is a string
+  subject: "Collaboration with me!",   # This is a string
+  message: "Hello, Oanh! Love the profile. You want collaboration? Let's have a call."   # This is a string
 )

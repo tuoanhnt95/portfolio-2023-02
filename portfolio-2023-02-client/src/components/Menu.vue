@@ -11,7 +11,7 @@ const menuItems = [
   { name: "About me", link: "link" },
   { name: "Projects", link: "link" },
   { name: "Contact", link: "link" },
-]  
+]
 </script>
 
 <style scoped>
