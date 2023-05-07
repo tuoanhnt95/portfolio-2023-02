@@ -8,11 +8,11 @@ class UserMailer < ApplicationMailer
     # end
 
     def contact(contact)
-      # @contact = params[:contact]
-      # @name = contact.name
-      # @email = contact.email
-      # @subject = contact.subject
-      # @message = contact.message
+      @contact = params[:contact]
+      @name = contact.name
+      @email = contact.email
+      @subject = contact.subject
+      @message = contact.message
       contact_params = {
         :sender => contact.name,
         :from => contact.email,
@@ -20,6 +20,6 @@ class UserMailer < ApplicationMailer
         :subject => contact.subject,
         :message => contact.message
       }
-      puts contact_params
+      mail(to: @email, subject: @subject)
     end
 end
