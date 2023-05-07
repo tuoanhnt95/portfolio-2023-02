@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
     def create
       @contact = Contact.new(contact_params)
 
-      if @contact.save
+      if @contact.valid?
         UserMailer.contact(@contact).deliver_now
         redirect_to root_path
         # flash[:notice] = "I have received your message and will be in touch within three days!"
