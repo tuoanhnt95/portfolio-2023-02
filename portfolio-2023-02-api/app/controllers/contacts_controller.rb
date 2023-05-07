@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
       # @contact = Contact.new(contact_params)
       @contact = Contact.new(params[:contact])
       @contact.request = request
-      @contact.deliver
+
       if @contact.deliver
         # UserMailer.contact(@contact).deliver_now
         redirect_to root_path
