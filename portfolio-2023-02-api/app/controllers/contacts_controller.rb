@@ -4,10 +4,12 @@ class ContactsController < ApplicationController
     end
 
     def create
-      @contact = Contact.new(contact_params)
-
-      if @contact.valid?
-        UserMailer.contact(@contact).deliver_now
+      # @contact = Contact.new(contact_params)
+      @contact = Contact.new(params[:contact])
+      @contact.request = request
+      @contact.deliver
+      if @contact.deliver
+        # UserMailer.contact(@contact).deliver_now
         redirect_to root_path
         # flash[:notice] = "I have received your message and will be in touch within three days!"
       else
@@ -16,10 +18,10 @@ class ContactsController < ApplicationController
       end
     end
 
-    private
+    # private
 
-    def contact_params
-      params.permit(:name, :email, :subject, :message)
-      # require(:contact) cause unclear error. For more details: https://stackoverflow.com/questions/47391168/param-is-missing-or-the-value-is-empty-in-nested-resource-method
-    end
+    # def contact_params
+    #   params.permit(:name, :email, :subject, :message)
+    #   # require(:contact) cause unclear error. For more details: https://stackoverflow.com/questions/47391168/param-is-missing-or-the-value-is-empty-in-nested-resource-method
+    # end
 end

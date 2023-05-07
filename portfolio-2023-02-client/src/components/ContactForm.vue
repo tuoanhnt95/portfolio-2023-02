@@ -47,7 +47,7 @@ function submitContact() {
     subject: subject.value,
     message: message.value
   })
-  .then((res) => console.log(res.data))
+  .then((res) => console.log(res))
   .catch((error) => console.log(error));
 }
 
