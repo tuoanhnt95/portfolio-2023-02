@@ -1,5 +1,5 @@
 <template>
-  <div class="flex fixed top-1 right-2 border border-indigo-500 z-40">
+  <div class="flex z-20 justify-end" id="bg-menu">
     <div v-for="(item, i) in menuItems" :key="i" class="m-2">
       {{ item.name }}
     </div>
@@ -15,4 +15,9 @@ const menuItems = [
 </script>
 
 <style scoped>
+#bg-menu {
+  background-color: rgba(19,19,19,.15);
+  backdrop-filter: blur(6px);
+  opacity: 1;
+}
 </style>
