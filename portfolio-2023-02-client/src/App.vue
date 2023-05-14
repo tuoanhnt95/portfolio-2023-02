@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-black text-yellow-500 w-screen border border-indigo-500">
+  <div class="bg-black text-yellow-500 w-screen">
     <Menu class="fixed z-20 w-screen"/>
 
-    <header id="banner">
-      <div class="banner-gradient" :class="{ 'banner-opacity': contactFormIsShown }">
-        <img id="img-banner" alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }"/>
+    <header class="h-[45vh] overfow-hidden">
+      <div :class="{ 'banner-opacity': contactFormIsShown }" class="h-full border border-indigo-500">
+        <img class="img-banner tablet-potrt-up:w-full tablet-potrt-up:h-auto" alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }" />
       </div>
       <div class="absolute h-full top-1/4 left-1/2 border border-indigo-500" :class="{ 'content-fade': contactFormIsShown }">
         <p class="text-2xl font-black">Oanh</p>
@@ -38,26 +38,21 @@ const toggleContactForm = () => {
 </script>
 
 <style scoped>
-#banner {
-  height: 50vh;
-  overflow: hidden;
-
-  /* margin-top: -82px; */
-  /* @media screen {
-
-  } */
-
-}
-
-.banner-gradient {
-  display: inline-block;
-  background-color: black;
-}
-
-#img-banner {
-  top: 0px;
-  left: 0px;
+/* Banner */
+.img-banner {
+  margin-left: -25%;
+  object-fit: cover;
+  min-width: calc(125%);
+  height: 100%;
   opacity: 0.55;
+  overflow: hidden;
+}
+@media (min-width: 480px) {
+  .img-banner {
+    margin-left: 0;
+    object-position: top 20% left 0;
+    min-width: 100%;
+  }
 }
 
 .wrapper {
