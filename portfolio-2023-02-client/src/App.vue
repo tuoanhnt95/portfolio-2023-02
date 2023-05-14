@@ -7,9 +7,9 @@
         <img class="img-banner" alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }" />
       </div>
       <div class="absolute top-1/4 left-1/2" :class="{ 'content-fade': contactFormIsShown }">
-        <p class="text-9xl tracking-wide">Oanh</p>
+        <p class="text-9xl tracking-wide font-playfair-bold">Oanh</p>
         <p class="m-1 font-sans text-xl tracking-wide">Full-stack developer with an eye for new <strong>challenges</strong></p>
-        <button class="border border-yellow-400 p-2" @click="toggleContactForm()">Contact me!</button>
+        <button class="border border-yellow-400 p-2 text-xl tracking-wider font-semibold" @click="toggleContactForm()">Contact me</button>
       </div>
 
       <ContactForm v-if="contactFormIsShown" @toggle-form="toggleContactForm()"/>
@@ -41,7 +41,14 @@ const toggleContactForm = () => {
 /* Fonts */
 @font-face {
   font-family: "Playfair";
+  src: local('Playfair'), url('./assets/fonts/PlayfairDisplay/PlayfairDisplay-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: "PlayfairBold";
   src: local('Playfair'), url('./assets/fonts/PlayfairDisplay/PlayfairDisplay-Black.ttf') format('truetype');
+}
+.font-playfair-bold {
+  font-family: 'PlayfairBold', serif;
 }
 @font-face {
   font-family: "Roboto";
