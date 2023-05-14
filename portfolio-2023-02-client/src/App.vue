@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black text-yellow-500 w-screen">
-    <Menu class="fixed z-20 w-screen text-base"/>
+    <Menu class="fixed z-20 w-screen text-base font-lato tracking-wider"/>
 
     <header class="h-[55vh] overfow-hidden">
       <div :class="{ 'banner-opacity': contactFormIsShown }" class="h-full border border-indigo-500">
@@ -8,8 +8,12 @@
       </div>
       <div class="absolute top-1/4 left-1/2" :class="{ 'content-fade': contactFormIsShown }">
         <p class="text-9xl tracking-wide font-playfair-bold">Oanh</p>
-        <p class="m-1 font-sans text-xl tracking-wide">Full-stack developer with an eye for new <strong>challenges</strong></p>
-        <button class="border border-yellow-400 p-2 text-xl tracking-wider font-semibold" @click="toggleContactForm()">Contact me</button>
+        <div class="mx-1 my-2 font-sans tracking-wide">
+          <strong class="text-base drop-shadow-lg">Full-stack</strong> developer with an eye for new <strong>challenges</strong>
+        </div>
+        <button class="my-3 border border-yellow-400 hover:bg-black btn-custom btn-8 btn-16" @click="toggleContactForm()">
+          <span class="px-8 py-3 text-xl font-sans tracking-wider font-semibold">Contact me</span>
+        </button>
       </div>
 
       <ContactForm v-if="contactFormIsShown" @toggle-form="toggleContactForm()"/>
@@ -61,6 +65,10 @@ const toggleContactForm = () => {
 .font-roboto {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.font-lato {
+  font-family: 'Lato', sans-serif;
+}
+
 /* Banner */
 .img-banner {
   margin-left: -25%;
@@ -76,6 +84,71 @@ const toggleContactForm = () => {
     object-position: top 20% left 0;
     min-width: 100%;
   }
+}
+
+/* Button */
+.btn-custom {
+  cursor: pointer;
+  overflow: hidden;
+  text-shadow: #FC0 1px 0 10px;
+}
+.btn-8 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-8:before,
+.btn-8:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+.btn-8:before{
+   height: 0%;
+   width: 2px;
+}
+.btn-8:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-8:hover:before {
+  height: 100%;
+}
+.btn-8:hover:after {
+  width: 100%;
+}
+.btn-8:hover{
+  background: rgba(0,0,0,0.9);
+}
+.btn-8 span:hover{
+  color: var(--primary);
+}
+.btn-8 span:before,
+.btn-8 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+.btn-8 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-8 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-8 span:hover:before {
+  height: 100%;
+}
+.btn-8 span:hover:after {
+  width: 100%;
 }
 
 .wrapper {
