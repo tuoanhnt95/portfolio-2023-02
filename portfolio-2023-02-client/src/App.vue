@@ -1,15 +1,15 @@
 <template>
   <div class="bg-black text-yellow-500 w-screen">
-    <Menu class="fixed z-20 w-screen"/>
+    <Menu class="fixed z-20 w-screen text-base"/>
 
-    <header class="h-[45vh] overfow-hidden">
+    <header class="h-[55vh] overfow-hidden">
       <div :class="{ 'banner-opacity': contactFormIsShown }" class="h-full border border-indigo-500">
-        <img class="img-banner tablet-potrt-up:w-full tablet-potrt-up:h-auto" alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }" />
+        <img class="img-banner" alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }" />
       </div>
-      <div class="absolute h-full top-1/4 left-1/2 border border-indigo-500" :class="{ 'content-fade': contactFormIsShown }">
-        <p class="text-2xl font-black">Oanh</p>
-        <p class="tablet-potrt-up:text-slate-200">Full-stack developer with an insatiable eye for new projects</p>
-        <button class="border border-yellow-400 mt-2" @click="toggleContactForm()">Contact me!</button>
+      <div class="absolute top-1/4 left-1/2" :class="{ 'content-fade': contactFormIsShown }">
+        <p class="text-9xl tracking-wide">Oanh</p>
+        <p class="m-1 font-sans text-xl tracking-wide">Full-stack developer with an eye for new <strong>challenges</strong></p>
+        <button class="border border-yellow-400 p-2" @click="toggleContactForm()">Contact me!</button>
       </div>
 
       <ContactForm v-if="contactFormIsShown" @toggle-form="toggleContactForm()"/>
@@ -38,6 +38,22 @@ const toggleContactForm = () => {
 </script>
 
 <style scoped>
+/* Fonts */
+@font-face {
+  font-family: "Playfair";
+  src: local('Playfair'), url('./assets/fonts/PlayfairDisplay/PlayfairDisplay-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: "Roboto";
+  src: local('Roboto'), url('./assets/fonts/RobotoMono/RobotoMono-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: "OpenSans";
+  src: local('OpenSans'), url('./assets/fonts/OpenSans/OpenSans-SemiBold.ttf') format('truetype');
+}
+.font-roboto {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 /* Banner */
 .img-banner {
   margin-left: -25%;
