@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+#app {
+  /* font-family: 'OpenSans'; */
+  /* font-family: 'ui-sans-serif'; */
+  font-family: 'Playfair';
+  /* font-family: 'Roboto'; */
+}
+
 /* #app {
   max-width: 1280px;
   margin: 0 auto;
