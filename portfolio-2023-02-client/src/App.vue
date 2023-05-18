@@ -1,17 +1,17 @@
 <template>
-  <div class="bg-black text-yellow-500 w-screen">
+  <div class=" w-screen bg-black text-yellow-500 overflow-x-hidden">
     <Menu class="fixed z-20 w-screen text-base font-lato tracking-wider"/>
 
     <header class="h-[55vh] overfow-hidden">
       <div :class="{ 'banner-opacity': contactFormIsShown }" class="h-full">
-        <img class="img-banner" alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }" />
+        <img alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }" class="img-banner ml-[-25%] xs:ml-0 object-cover min-w-[125%] xs:min-w-full h-full opacity-50"/>
       </div>
-      <div class="absolute top-1/4 left-1/4 xs:left-[40%] sm:left-1/2" :class="{ 'content-fade': contactFormIsShown }">
+      <div class="absolute top-1/4 left-1/4 xs:left-[45%] sm:left-1/2" :class="{ 'content-fade': contactFormIsShown }">
         <p class="text-8xl md:text-9xl tracking-wide font-playfair-bold">Oanh</p>
-        <div class="mx-2 my-2 text-base xs:text-lg sm:text-xl drop-shadow-lg font-sans tracking-wide">
+        <div class="mx-4 xs:mx-2 my-2 text-base xs:text-lg sm:text-xl drop-shadow-lg font-sans tracking-wide">
           <strong>Full-stack</strong> developer with an eye for new <strong>challenges</strong>
         </div>
-        <button class="mx-2 my-3 border border-yellow-400 hover:bg-black btn-custom btn-8 btn-16" @click="toggleContactForm()">
+        <button class="mx-4 xs:mx-2 my-3 border border-yellow-400 hover:bg-black btn-custom btn-8 btn-16" @click="toggleContactForm()">
           <span class="px-8 py-3 text-xl font-sans tracking-wider font-semibold">Contact me</span>
         </button>
       </div>
@@ -70,26 +70,14 @@ const toggleContactForm = () => {
 }
 
 /* Banner */
-.img-banner {
-  margin-left: -25%;
-  object-fit: cover;
-  min-width: calc(125%);
-  height: 100%;
-  opacity: 0.5;
-  overflow: hidden;
-}
 @media (min-width: 475px) {
   .img-banner {
-    margin-left: 0;
     object-position: top 20% left 100%;
-    min-width: 100%;
   }
 }
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .img-banner {
-    margin-left: 0;
-    object-position: top 20% left 0;
-    min-width: 100%;
+    object-position: left 0;
   }
 }
 
@@ -191,7 +179,7 @@ h2 {
   opacity: 0.1;
 }
 
-.content-fade h1, h2{
+.content-fade {
   transition: opacity 1s ease-in-out;
   opacity: 0;
 }
