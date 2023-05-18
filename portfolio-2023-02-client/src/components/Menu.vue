@@ -1,8 +1,8 @@
 <template>
-  <div class="flex z-20 justify-end" id="bg-menu">
-    <div v-for="(item, i) in menuItems" :key="i" class="m-2">
+  <div class="flex justify-end z-20 xs:text-lg" id="bg-menu">
+    <button v-for="(item, i) in menuItems" :key="i" class="mx-3 my-2">
       {{ item.name }}
-    </div>
+    </button>
   </div>
 </template>
 
