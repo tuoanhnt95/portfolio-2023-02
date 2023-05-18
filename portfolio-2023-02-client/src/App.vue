@@ -3,15 +3,15 @@
     <Menu class="fixed z-20 w-screen text-base font-lato tracking-wider"/>
 
     <header class="h-[55vh] overfow-hidden">
-      <div :class="{ 'banner-opacity': contactFormIsShown }" class="h-full border border-indigo-500">
+      <div :class="{ 'banner-opacity': contactFormIsShown }" class="h-full">
         <img class="img-banner" alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }" />
       </div>
-      <div class="absolute top-1/4 left-1/2" :class="{ 'content-fade': contactFormIsShown }">
-        <p class="text-9xl tracking-wide font-playfair-bold">Oanh</p>
-        <div class="mx-1 my-2 font-sans tracking-wide">
-          <strong class="text-base drop-shadow-lg">Full-stack</strong> developer with an eye for new <strong>challenges</strong>
+      <div class="absolute top-1/4 left-1/4 xs:left-[40%] sm:left-1/2" :class="{ 'content-fade': contactFormIsShown }">
+        <p class="text-8xl md:text-9xl tracking-wide font-playfair-bold">Oanh</p>
+        <div class="mx-2 my-2 text-base xs:text-lg sm:text-xl drop-shadow-lg font-sans tracking-wide">
+          <strong>Full-stack</strong> developer with an eye for new <strong>challenges</strong>
         </div>
-        <button class="my-3 border border-yellow-400 hover:bg-black btn-custom btn-8 btn-16" @click="toggleContactForm()">
+        <button class="mx-2 my-3 border border-yellow-400 hover:bg-black btn-custom btn-8 btn-16" @click="toggleContactForm()">
           <span class="px-8 py-3 text-xl font-sans tracking-wider font-semibold">Contact me</span>
         </button>
       </div>
@@ -75,10 +75,17 @@ const toggleContactForm = () => {
   object-fit: cover;
   min-width: calc(125%);
   height: 100%;
-  opacity: 0.55;
+  opacity: 0.5;
   overflow: hidden;
 }
-@media (min-width: 480px) {
+@media (min-width: 475px) {
+  .img-banner {
+    margin-left: 0;
+    object-position: top 20% left 100%;
+    min-width: 100%;
+  }
+}
+@media (min-width: 640px) {
   .img-banner {
     margin-left: 0;
     object-position: top 20% left 0;
