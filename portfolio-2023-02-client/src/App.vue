@@ -8,7 +8,7 @@
       </div>
       <div class="absolute top-1/4 left-1/4 xs:left-[45%] sm:left-1/2" :class="{ 'content-fade': contactFormIsShown }">
         <p class="text-8xl md:text-9xl tracking-wide font-playfair-bold">Oanh</p>
-        <div class="mx-4 xs:mx-2 my-2 text-base xs:text-lg sm:text-xl drop-shadow-lg font-sans tracking-wide">
+        <div class="mx-4 xs:mx-2 my-2 text-base xs:text-lg sm:text-xl drop-shadow-lg tracking-wide">
           <strong>Full-stack</strong> developer with an eye for new <strong>challenges</strong>
         </div>
         <button class="mx-4 xs:mx-2 my-3 border border-yellow-400 hover:bg-black btn-custom btn-8 btn-16" @click="toggleContactForm()">
