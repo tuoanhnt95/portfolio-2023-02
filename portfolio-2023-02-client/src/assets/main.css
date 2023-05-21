@@ -4,10 +4,18 @@
 @tailwind utilities;
 
 #app {
-  /* font-family: 'OpenSans'; */
+  font-family: 'Lato', sans-serif;
+  color: var(--primary);
   /* font-family: 'ui-sans-serif'; */
-  font-family: 'Playfair';
+  /* font-family: 'Playfair'; */
   /* font-family: 'Roboto'; */
+}
+
+/* --- Component --- */
+.bg-transparent-top-layer {
+  background-color: rgba(19,19,19,.15);
+  backdrop-filter: blur(6px);
+  opacity: 1;
 }
 
 /* #app {

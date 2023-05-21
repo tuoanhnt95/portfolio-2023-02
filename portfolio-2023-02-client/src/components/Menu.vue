@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-end z-20 xs:text-lg" id="bg-menu">
+  <div class="flex justify-end z-20 xs:text-lg bg-transparent-top-layer">
     <button v-for="(item, i) in menuItems" :key="i" class="mx-3 my-2">
       {{ item.name }}
     </button>
@@ -15,9 +15,7 @@ const menuItems = [
 </script>
 
 <style scoped>
-#bg-menu {
-  background-color: rgba(19,19,19,.15);
-  backdrop-filter: blur(6px);
-  opacity: 1;
-}
+@import '../assets/main.css'
+
+
 </style>
