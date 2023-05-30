@@ -1,21 +1,21 @@
 <template>
   <!-- <div class="bg-neutral-50 bg-opacity-80 fixed z-10 top-40 left-10 border border-indigo-500 p-2"> -->
-  <div class="fixed w-64 m-auto top-40 z-10 left-10 bg-transparent-top-layer border-yellow border-blur">
+  <div class="fixed z-10 top-36 left-10 w-72 px-2 py-3 bg-transparent-top-layer border-blur rounded">
     <div class="flex justify-center px-2 py-4">
       <div>
-        <h1 class="flex space-x-4 mb-2 ml-1 text-xl font-bold text-center">
+        <div class="flex space-x-4 mb-2 ml-1 text-3xl font-bold text-center">
           <font-awesome-icon icon="fa-regular fa-envelope" />
           <font-awesome-icon icon="fa-brands fa-linkedin" />
-        </h1>
+        </div>
         <div class="w-full">
           <form v-if="inputIsShown" action="#">
-            <input v-model="name" type="text" id="name" name="name" placeholder="Name" class="w-full h-8 p-1 border-yellow">
-            <input v-model="email" type="email" id="email" name="email" placeholder="E-mail" class="w-full h-8 p-1 border-yellow">
-            <input v-model="subject" type="text" id="subject" name="subject" placeholder="Subject" class="w-full h-8 p-1 border-yellow">
-            <textarea v-model="message" id="message" name="message" placeholder="Message" class="w-full h-28 p-1 border-yellow">
+            <input v-model="name" type="text" id="name" name="name" placeholder="Name" class="box-input">
+            <input v-model="email" type="email" id="email" name="email" placeholder="E-mail" class="box-input">
+            <input v-model="subject" type="text" id="subject" name="subject" placeholder="Subject" class="box-input">
+            <textarea v-model="message" id="message" name="message" placeholder="Message" class="box-input">
             </textarea>
-            <div class="w-full h-10 border-yellow" @click="submitContact">
-              <p class="text-center">SEND!</p>
+            <div id="btn-send" class="flex items-stretch justify-center box-input -mt-2 cursor-pointer" @click="submitContact">
+              <p class="self-center">SEND !</p>
             </div>
           </form>
           <div v-if="successSubmit">
@@ -25,7 +25,9 @@
             <p>I am sorry, the email did not go through. Please email me: tuoanhnt95@gmail.com</p>
           </div>
         </div>
-        <div class="absolute top-0 right-1" @click="$emit('toggleForm')">X</div>
+        <div class="absolute top-0 right-1 cursor-pointer" @click="$emit('toggleForm')">
+          <font-awesome-icon icon="fa-solid fa-xmark fa-2xl" size="lg"/>
+        </div>
       </div>
     </div>
   </div>
@@ -99,19 +101,34 @@ input, textarea {
   color: var(--primary) !important;
 }
 ::-moz-placeholder {
+  color: var(--primary) !important;
+}
+
+.box-input {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background-color: rgba(0,0,0,0.7);
   color: var(--primary);
-}
-.text-start-top {
-  /* display: flex;
-  align-items: top; */
-  border: 1px solid red;
+  box-shadow: 0px 0px 2px 2px rgba(255,204,0,0.4),
+        inset 0px 0px 1px 1px rgba(255,204,0,0.6);
 }
 
-.border-yellow {
-  border: 1px solid var(--primary);
+#message {
+  height: 7rem;
 }
 
-.align-center {
-  align-self: center;
+#btn-send {
+  height: 3.5rem;
+}
+
+.border-blur {
+  box-shadow: 0px 0px 4px 3px rgba(255,204,0,0.4),
+        inset 0px 0px 4px 3px rgba(255,204,0,0.4);
+}
+
+.bg-transparent-dark {
+  /* background-color: rgba(0,0,0,0.1); */
+  filter: drop-shadow(2px 2px 4px 4px rgba(0,204,0,1));
 }
 </style>
