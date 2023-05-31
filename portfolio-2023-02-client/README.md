@@ -21,6 +21,18 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
+## Install Vue fontawesome
+
+```sh
+# SVG Core
+npm i --save @fortawesome/fontawesome-svg-core
+# Free icons styles
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+# for Vue 3.x Vue component
+npm i --save @fortawesome/vue-fontawesome@latest-3
+```
 ## Project Setup
 
 ```sh
