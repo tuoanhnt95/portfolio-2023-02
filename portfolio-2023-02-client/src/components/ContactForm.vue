@@ -4,8 +4,18 @@
       <div class="flex justify-center px-2 py-4">
         <div>
           <div class="flex space-x-4 mb-2 ml-1 text-3xl font-bold text-center">
-            <font-awesome-icon icon="fa-regular fa-envelope" />
-            <font-awesome-icon icon="fa-brands fa-linkedin" />
+            <a href="mailto:tuoanhnt95@gmail.com?subject=IT Contact request&body=Hi Oanh! This is [my name...] from [my company/location...]. I am a [my job...]. 
+
+            Would love to chat with you about [IT-related topic...]. Are you available on [date time 1...] [date time 2...] ...?
+
+            Could you send me [your resume/github project/Docker-contained project...] by [date time...]? Thanks!
+             
+            Looking forwards to hearing from you.">
+              <font-awesome-icon icon="fa-regular fa-envelope" />
+            </a>
+            <a href="https://www.linkedin.com/in/oanhnguyenthitu/" target="_blank">
+              <font-awesome-icon icon="fa-brands fa-linkedin" />
+            </a>
           </div>
           <div class="w-full">
             <form v-if="inputIsShown" action="#">
