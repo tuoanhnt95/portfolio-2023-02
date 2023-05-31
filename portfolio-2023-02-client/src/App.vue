@@ -1,5 +1,5 @@
 <template>
-  <div class=" w-screen bg-black text-yellow-500 overflow-x-hidden">
+  <div class="w-screen bg-black text-yellow-500 overflow-x-hidden">
     <Menu class="fixed z-20 w-screen text-base font-lato tracking-wider"/>
 
     <header class="h-[55vh] overfow-hidden">
@@ -11,7 +11,7 @@
         <div class="mx-4 xs:mx-2 my-2 text-base xs:text-lg sm:text-xl drop-shadow-lg tracking-wide">
           <strong>Full-stack</strong> developer with an eye for new <strong>challenges</strong>
         </div>
-        <button class="mx-4 xs:mx-2 my-3 border border-yellow-400 hover:bg-black btn-custom btn-8 btn-16" @click="toggleContactForm()">
+        <button class="mx-4 xs:mx-2 my-3 border border-yellow-400 hover:bg-black btn-yellow-glow btn-8 btn-16" @click="toggleContactForm()">
           <span class="px-8 py-3 text-xl font-sans tracking-wider font-semibold">Contact me</span>
         </button>
       </div>
@@ -82,7 +82,7 @@ const toggleContactForm = () => {
 }
 
 /* Button */
-.btn-custom {
+.btn-yellow-glow {
   cursor: pointer;
   overflow: hidden;
   text-shadow: #FC0 1px 0 10px;
