@@ -1,30 +1,31 @@
 <template>
-  <!-- <div class="bg-neutral-50 bg-opacity-80 fixed z-10 top-40 left-10 border border-indigo-500 p-2"> -->
-  <div class="fixed z-10 top-36 left-10 w-72 px-2 py-3 bg-transparent-top-layer border-blur rounded">
-    <div class="flex justify-center px-2 py-4">
-      <div>
-        <div class="flex space-x-4 mb-2 ml-1 text-3xl font-bold text-center">
-          <font-awesome-icon icon="fa-regular fa-envelope" />
-          <font-awesome-icon icon="fa-brands fa-linkedin" />
-        </div>
-        <div class="w-full">
-          <form v-if="inputIsShown" action="#">
-            <input v-model="name" type="text" id="name" name="name" placeholder="Name *" class="box-input" required>
-            <input v-model="email" type="email" id="email" name="email" placeholder="E-mail *" class="box-input" required>
-            <input v-model="subject" type="text" id="subject" name="subject" placeholder="Subject" class="box-input">
-            <textarea v-model="message" id="message" name="message" placeholder="Message *" class="box-input" required>
-            </textarea>
-            <input type="submit" value="SEND !" id="btn-send" class="flex items-stretch justify-center box-input -mt-2 cursor-pointer hover-glow" @click.stop=" canSubmit ? submitContact : ''">
-          </form>
-          <div v-if="successSubmit">
-            <p>Thank you for reaching out! I will be in touch within three business days.</p>
+  <div class="w-full">
+    <div class="fixed z-10 top-36 left-1/2 -translate-x-1/2 w-72 xs:w-80 lg:w-96 px-2 py-3 bg-transparent-top-layer border-blur rounded">
+      <div class="flex justify-center px-2 py-4">
+        <div>
+          <div class="flex space-x-4 mb-2 ml-1 text-3xl font-bold text-center">
+            <font-awesome-icon icon="fa-regular fa-envelope" />
+            <font-awesome-icon icon="fa-brands fa-linkedin" />
           </div>
-          <div v-if="failSubmit">
-            <p>I am sorry, the email did not go through. Please email me: tuoanhnt95@gmail.com</p>
+          <div class="w-full">
+            <form v-if="inputIsShown" action="#">
+              <input v-model="name" type="text" id="name" name="name" placeholder="Name *" class="box-input" required>
+              <input v-model="email" type="email" id="email" name="email" placeholder="E-mail *" class="box-input" required>
+              <input v-model="subject" type="text" id="subject" name="subject" placeholder="Subject" class="box-input">
+              <textarea v-model="message" id="message" name="message" placeholder="Message *" class="box-input" required>
+              </textarea>
+              <input type="submit" value="SEND !" id="btn-send" class="flex items-stretch justify-center box-input -mt-2 cursor-pointer hover-glow" @click.stop=" canSubmit ? submitContact : ''">
+            </form>
+            <div v-if="successSubmit">
+              <p>Thank you for reaching out! I will be in touch within three business days.</p>
+            </div>
+            <div v-if="failSubmit">
+              <p>I am sorry, the email did not go through. Please email me: tuoanhnt95@gmail.com</p>
+            </div>
           </div>
-        </div>
-        <div class="absolute top-0 right-1 cursor-pointer" @click="$emit('toggleForm')">
-          <font-awesome-icon icon="fa-solid fa-xmark fa-2xl" size="lg"/>
+          <div class="absolute top-0 right-1 cursor-pointer" @click="$emit('toggleForm')">
+            <font-awesome-icon icon="fa-solid fa-xmark fa-2xl" size="lg"/>
+          </div>
         </div>
       </div>
     </div>
