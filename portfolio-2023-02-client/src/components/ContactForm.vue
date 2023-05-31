@@ -9,14 +9,12 @@
         </div>
         <div class="w-full">
           <form v-if="inputIsShown" action="#">
-            <input v-model="name" type="text" id="name" name="name" placeholder="Name" class="box-input">
-            <input v-model="email" type="email" id="email" name="email" placeholder="E-mail" class="box-input">
+            <input v-model="name" type="text" id="name" name="name" placeholder="Name *" class="box-input" required>
+            <input v-model="email" type="email" id="email" name="email" placeholder="E-mail *" class="box-input" required>
             <input v-model="subject" type="text" id="subject" name="subject" placeholder="Subject" class="box-input">
-            <textarea v-model="message" id="message" name="message" placeholder="Message" class="box-input">
+            <textarea v-model="message" id="message" name="message" placeholder="Message *" class="box-input" required>
             </textarea>
-            <div id="btn-send" class="flex items-stretch justify-center box-input -mt-2 cursor-pointer" @click="submitContact">
-              <p class="self-center">SEND !</p>
-            </div>
+            <input type="submit" value="SEND !" id="btn-send" class="flex items-stretch justify-center box-input -mt-2 cursor-pointer hover-glow" @click.stop=" canSubmit ? submitContact : ''">
           </form>
           <div v-if="successSubmit">
             <p>Thank you for reaching out! I will be in touch within three business days.</p>
@@ -34,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { Ref } from 'vue';
 import axios from 'axios';
 
@@ -42,8 +40,17 @@ defineEmits<{
   (e: 'toggleForm', value: boolean): void
 }>()
 
+const canSubmit = computed(() => {
+  const badValues = [null, undefined, '']
+  return !badValues.includes(name.value) && !badValues.includes(email.value) && !badValues.includes(message.value)
+})
+
+// const invalidEmail
+
 function submitContact() {
   console.log(name.value, email.value, subject.value, message.value)
+
+  // Show confirmation message
 
   inputIsShown.value = true
   successSubmit.value = false
@@ -96,12 +103,23 @@ input, textarea {
 }
 ::placeholder {
   color: var(--primary) !important;
+  opacity: 0.5 !important;
 }
 ::-webkit-input-placeholder::placeholder {
   color: var(--primary) !important;
+  opacity: 0.5 !important;
 }
 ::-moz-placeholder {
   color: var(--primary) !important;
+  opacity: 0.5 !important;
+}
+
+input:focus, textarea:focus, .hover-glow:hover {
+  z-index: 1;
+  outline: 3px solid var(--primary);
+  border-radius: 1px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .box-input {
@@ -122,6 +140,9 @@ input, textarea {
   height: 3.5rem;
 }
 
+#btn-send:hover > p {
+  font-weight: 700;
+}
 .border-blur {
   box-shadow: 0px 0px 4px 3px rgba(255,204,0,0.4),
         inset 0px 0px 4px 3px rgba(255,204,0,0.4);
