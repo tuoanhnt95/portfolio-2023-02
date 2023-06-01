@@ -4,42 +4,54 @@
       Filter 
       <font-awesome-icon icon="fa-solid fa-filter" class="self-center ml-1" />
     </div>
-    <div v-for="(stack, i) in backend" :key="i" class="btn-stack hover-glow" :class="{ selected: stack.select }" @click="toggleFilter(stack)">
-      {{ stack.name }}
-    </div>
-    <div class="w-4"></div>
-    <div v-for="(stack, i) in frontend" :key="i" class="btn-stack hover-glow" :class="{ selected: stack.select }" @click="toggleFilter(stack)">
-      {{ stack.name }}
-    </div>
-    <div class="w-4"></div>
-    <div v-for="(stack, i) in database" :key="i" class="btn-stack hover-glow" :class="{ selected: stack.select }" @click="toggleFilter(stack)">
-      {{ stack.name }}
+    <div v-for="(stack, i) in stacks" :key="i" class="flex">
+      <div class="btn-stack hover-glow" :class="{ selected: stack.select }" @click="filterStack(stack)">
+        {{ stack.name }}
+      </div>
+      <div v-if="[2,7].includes(i)" class="md:w-4"></div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { defineEmits } from 'vue'
 
-const backend = ref([
-  {name: 'ruby on rails', select: false},
-  {name: 'python', select: false},
-  {name: 'c#', select: false}
-])
-
-const frontend = ref([
+ const stacks = ref([
+  //0 
+  {name: 'ruby on rails', select: false}, 
+  //1
+  {name: 'python', select: false}, 
+  //2
+  {name: 'c#', select: false},
+  //3
   {name: 'javascript', select: false},
+  //4
   {name: 'typescript', select: false},
+  //5
   {name: 'vue.js', select: false},
+  //6
   {name: 'bootstrap', select: false},
-  {name: 'tailwind', select: false}
-])
-
-const database = ref([
+  //7
+  {name: 'tailwind', select: false},
+  //8
   {name: 'SQLServer', select: false},
+  //9
   {name: 'PostgreSQL', select: false},
+  //10
   {name: 'SQLite', select: false}
-])
+ ])
+
+const filteredStackIndexes = computed(() => {
+  return stacks.value.filter(stack => stack.select).map(stack => stacks.value.indexOf(stack))
+})
+
+const emit = defineEmits(['filter-stack'])
+
+function filterStack (stack: any) {
+  toggleFilter(stack)
+  emit('filter-stack', filteredStackIndexes.value)
+}
 
 function toggleFilter(stack: any) {
   stack.select = !stack.select
