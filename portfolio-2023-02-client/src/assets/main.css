@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 #app {
-  font-family: 'Lato', sans-serif;
+  /* font-family: 'Lato', sans-serif; */
   color: var(--primary);
   overflow-x: hidden;
   /* font-family: 'ui-sans-serif'; */

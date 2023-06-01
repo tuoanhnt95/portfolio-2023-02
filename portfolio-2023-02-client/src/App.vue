@@ -12,14 +12,14 @@
           <strong>Full-stack</strong> developer with an eye for new <strong>challenges</strong>
         </div>
         <button class="mx-4 xs:mx-2 my-3 border border-yellow-400 hover:bg-black btn-yellow-glow btn-8 btn-16" @click="toggleContactForm()">
-          <span class="px-8 py-3 text-xl font-sans tracking-wider font-semibold">Contact me</span>
+          <span class="px-8 py-3 text-xl tracking-wider font-semibold">Contact me</span>
         </button>
       </div>
 
       <ContactForm v-if="contactFormIsShown" @toggle-form="toggleContactForm()"/>
     </header>
-    <TechStack />
-    <Projects />
+    <TechStack class="flex justify-center mt-1 mb-4"/>
+    <Projects class="flex justify-center"/>
     <Footer />
   </div>
 </template>
@@ -42,6 +42,8 @@ const toggleContactForm = () => {
 </script>
 
 <style scoped>
+@import '@/assets/main.css';
+
 /* Fonts */
 @font-face {
   font-family: "Playfair";

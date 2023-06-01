@@ -1,26 +1,20 @@
 <template>
-<div class="font-mono mx-2 flex flex-wrap">  
-  <div class="flex m-2">
-    Filter 
-    <font-awesome-icon icon="fa-solid fa-filter" class="self-center ml-1" />
-  </div>
-  <!-- <div class="flex"> backend -->
+  <div class="font-mono flex flex-wrap">  
+    <div class="flex m-2">
+      Filter 
+      <font-awesome-icon icon="fa-solid fa-filter" class="self-center ml-1" />
+    </div>
     <div v-for="(stack, i) in backend" :key="i" class="btn-stack hover-glow" :class="{ selected: stack.select }" @click="toggleFilter(stack)">
       {{ stack.name }}
     </div>
     <div class="w-4"></div>
-  <!-- </div> -->
-  <!-- <div class="flex"> frontend -->
     <div v-for="(stack, i) in frontend" :key="i" class="btn-stack hover-glow" :class="{ selected: stack.select }" @click="toggleFilter(stack)">
       {{ stack.name }}
     </div>
     <div class="w-4"></div>
-  <!-- </div> -->
-  <!-- <div class="flex"> frontend -->
     <div v-for="(stack, i) in database" :key="i" class="btn-stack hover-glow" :class="{ selected: stack.select }" @click="toggleFilter(stack)">
       {{ stack.name }}
     </div>
-  <!-- </div> -->
   </div>
 </template>
 
