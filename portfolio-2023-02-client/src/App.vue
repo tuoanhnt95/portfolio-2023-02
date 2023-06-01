@@ -18,20 +18,22 @@
 
       <ContactForm v-if="contactFormIsShown" @toggle-form="toggleContactForm()"/>
     </header>
-    <TechStack class="flex justify-center mt-1 mb-4"/>
-    <Projects class="flex justify-center"/>
+    <TechStack @filter-stack="(filteredStackIndexes: any) => filteredStacksInds = filteredStackIndexes" class="flex justify-center mt-1 mb-4"/>
+    <Projects :filtered-indexes="filteredStacksInds" class="flex justify-center"/>
     <Footer />
   </div>
 </template>
 
 <script setup lang="ts">
 // import { RouterLink, RouterView } from 'vue-router'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import Menu from './components/Menu.vue'
 import TechStack from './components/TechStack.vue'
 import ContactForm from './components/ContactForm.vue'
 import Projects from './components/Projects.vue'
 import Footer from './components/Footer.vue'
+
+const filteredStacksInds = ref([])
 
 let contactFormIsShown = ref(false);
 const toggleContactForm = () => {

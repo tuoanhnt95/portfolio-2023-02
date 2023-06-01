@@ -5,7 +5,7 @@
         My Projects
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
-        <div v-for="(project, i) in projects" :key="i" @mouseenter="highlightBackground(i)" @mouseleave="unhighlightBackground(i)">
+        <div v-for="(project, i) in filteredProjects" :key="i" @mouseenter="highlightBackground(i)" @mouseleave="unhighlightBackground(i)">
           <div :id="`card-project${i}`" class="card-background"></div>
           <div class="img-project" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}"></div>
           <div class="mt-1 flex">
@@ -14,7 +14,7 @@
               <div class="font-bold">
                 {{ project.name }}
               </div>
-              <div class="font-sans" >
+              <div class="text-xs" >
                 {{ getStacksByProjectIndex(i) }}
               </div>
             </div>
@@ -26,11 +26,17 @@
 </template>
 
 <script setup lang="ts">
+import { computed, defineProps } from 'vue'
 import IconRole from './IconRole.vue'
-
+const props = defineProps({
+  filteredIndexes: {
+    type: Array,
+    required: true
+  }
+})
 const stacks = [
   //0 
-  {name: 'rails', select: false}, 
+  {name: 'ruby on rails', displayName: 'rails', select: false}, 
   //1
   {name: 'python', select: false}, 
   //2
@@ -89,13 +95,29 @@ const projects = [
 
 function getStacksByProjectIndex(i: number) {
   const project = projects[i]
-  const stacksByProjectIndex = project.stack.map((stackIndex: number) => capitalizeFirstLetter(stacks[stackIndex].name)).join(', ')
+  const stacksByProjectIndex = project.stack.map((stackIndex: number) => getStackDisplayName(stacks[stackIndex])).join(', ')
   return stacksByProjectIndex
+}
+
+function getStackDisplayName(stack: any) {
+  return stack.displayName ? capitalizeFirstLetter(stack.displayName) : capitalizeFirstLetter(stack.name)
 }
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+const filteredProjects = computed(() => {
+  if (props.filteredIndexes.length === 0) {
+    return projects
+  } 
+  return projects.filter((project: any) => {
+  // get project.stack for the indexs
+  // check if that index is in the filteredIndexes array
+    let result = project.stack.filter((stackIndex: number) => props.filteredIndexes.includes(stackIndex))
+    return result.length > 0
+  })
+}) 
 
 function highlightBackground(i: number) {
   const card = document.getElementById(`card-project${i}`)
