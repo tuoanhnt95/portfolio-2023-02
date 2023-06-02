@@ -4,9 +4,9 @@
       <div class="xs:mt-6 mb-8 text-2xl lg:text-3xl xl:text-4xl font-playfair-bold">
         My Projects
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
         <div v-for="(project, i) in filteredProjects" :key="i" @mouseenter="highlightBackground(i)" @mouseleave="unhighlightBackground(i)">
-          <div :id="`card-project${i}`" class="card-background"></div>
+          <div :id="`card-project${i}`" class="card-background bg-zinc-900"></div>
           <div class="img-project" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}"></div>
           <div class="mt-1 flex">
             <IconRole :role='roles[project.role]'/>
@@ -164,7 +164,7 @@ function unhighlightBackground(i: number) {
   margin: var(--offset);
   border-radius: var(--radius);
   overflow: hidden;
-  background: hsl(232.5deg, 11.7647058824%, 13.3333333333%);
+  /* background: hsl(232.5deg, 11.7647058824%, 13.3333333333%); */
   clip-path: inset(var(--inset-top,var(--inset)) var(--inset-right,var(--inset)) var(--inset-bottom,var(--inset)) var(--inset-left,var(--inset)) round var(--radius));
   contain: strict;
   transition: clip-path .3s ease .1s;

@@ -19,8 +19,8 @@
       <ContactForm v-if="contactFormIsShown" @toggle-form="toggleContactForm()"/>
     </header>
     <TechStack @filter-stack="(filteredStackIndexes: any) => filteredStacksInds = filteredStackIndexes" class="flex justify-center mt-1 mb-4"/>
-    <Projects :filtered-indexes="filteredStacksInds" class="flex justify-center"/>
-    <Footer />
+    <Projects :filtered-indexes="filteredStacksInds" class="flex justify-center mb-16"/>
+    <Footer class="relative inset-x-0 bottom-0"/>
   </div>
 </template>
 
