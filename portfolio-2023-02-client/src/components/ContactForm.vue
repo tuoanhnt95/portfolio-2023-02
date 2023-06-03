@@ -28,7 +28,7 @@
               <p>I am sorry, the email did not go through. Please email me: tuoanhnt95@gmail.com</p>
             </div>
           </div>
-          <div class="absolute top-0 right-1 cursor-pointer" @click="$emit('toggleForm')">
+          <div class="absolute top-0 right-1 cursor-pointer" @click="closeForm">
             <font-awesome-icon icon="fa-solid fa-xmark fa-2xl" size="lg"/>
           </div>
         </div>
@@ -38,12 +38,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, defineEmits } from 'vue'
 import type { Ref } from 'vue';
 import axios from 'axios';
 
-defineEmits<{
-  (e: 'toggleForm', value: boolean): void
+const emit = defineEmits<{
+  (e: 'toggleForm'): void
 }>()
 
 const canSubmit = computed(() => {
@@ -51,7 +51,9 @@ const canSubmit = computed(() => {
   return !badValues.includes(name.value) && !badValues.includes(email.value) && !badValues.includes(message.value)
 })
 
-// const invalidEmail
+function closeForm() {
+  emit('toggleForm')
+}
 
 function submitContact() {
   console.log(name.value, email.value, subject.value, message.value)
@@ -128,15 +130,7 @@ input:focus, textarea:focus, .hover-glow:hover {
   transition: 0.2s;
 }
 
-/* Button */
-#btn-send {
-  height: 3.5rem;
-}
-
-#btn-send:hover > p {
-  font-weight: 700;
-}
-
+/* Container */
 #container-contact {
   position: fixed;
   z-index: 10;
@@ -164,6 +158,13 @@ input:focus, textarea:focus, .hover-glow:hover {
   height: 7rem;
 }
 
+#btn-send {
+  height: 3.5rem;
+}
+
+#btn-send:hover > p {
+  font-weight: 700;
+}
 .border-blur {
   box-shadow: 0px 0px 4px 3px rgba(255,204,0,0.4),
         inset 0px 0px 4px 3px rgba(255,204,0,0.4);
