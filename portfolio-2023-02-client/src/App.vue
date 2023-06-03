@@ -4,7 +4,7 @@
 
     <header class="h-[55vh] overflow-hidden">
       <div :class="{ 'banner-opacity-out': contactFormIsShown, 'banner-opacity-in': !contactFormIsShown && isNotJustReloaded }" class="h-full">
-        <img alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom-out': contactFormIsShown, 'banner-zoom-in': !contactFormIsShown && isNotJustReloaded }" class="img-banner ml-[-25%] xs:ml-0 object-cover min-w-[125%] xs:min-w-full h-full opacity-50"/>
+        <img alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="/src/assets/images/sideface.jpg" :class="{ 'banner-zoom-out': contactFormIsShown, 'banner-zoom-in': !contactFormIsShown && isNotJustReloaded }" class="img-banner ml-[-25%] xs:ml-0 object-cover min-w-[125%] xs:min-w-full h-full opacity-50"/>
       </div>
       <div class="absolute top-1/4 left-1/4 xs:left-[45%] sm:left-1/2" :class="{ 'content-fade': contactFormIsShown, 'content-fade-in': !contactFormIsShown && isNotJustReloaded }
       ">
