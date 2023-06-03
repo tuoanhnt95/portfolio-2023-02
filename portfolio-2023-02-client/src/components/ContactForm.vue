@@ -1,22 +1,17 @@
 <template>
   <div class="w-full">
-    <div class="fixed z-10 top-36 left-1/2 -translate-x-1/2 w-72 xs:w-80 lg:w-96 px-2 py-3 bg-transparent-top-layer border-blur rounded">
+    <div id="container-contact" class="left-1/2 md:left-2/3 w-72 xs:w-80 lg:w-96 bg-transparent-top-layer border-blur">
       <div class="flex justify-center px-2 py-4">
         <div>
           <div class="flex space-x-4 mb-2 ml-1 text-3xl font-bold text-center">
-            <a href="mailto:tuoanhnt95@gmail.com?subject=IT Contact request&body=Hi Oanh! This is [my name...] from [my company/location...]. I am a [my job...]. 
-
-            Would love to chat with you about [IT-related topic...]. Are you available on [date time 1...] [date time 2...] ...?
-
-            Could you send me [your resume/github project/Docker-contained project...] by [date time...]? Thanks!
-             
-            Looking forwards to hearing from you.">
+            <a href="mailto:tuoanhnt95@gmail.com?subject=IT Contact request&body=Hi Oanh! This is ... Would love to chat with you about ... Are you available on ...? Looking forwards to hearing from you.">
               <font-awesome-icon icon="fa-regular fa-envelope" />
             </a>
             <a href="https://www.linkedin.com/in/oanhnguyenthitu/" target="_blank">
               <font-awesome-icon icon="fa-brands fa-linkedin" />
             </a>
           </div>
+          <p class="mb-2">or</p>
           <div class="w-full">
             <form v-if="inputIsShown" action="#">
               <input v-model="name" type="text" id="name" name="name" placeholder="Name *" class="box-input" required>
@@ -133,6 +128,28 @@ input:focus, textarea:focus, .hover-glow:hover {
   transition: 0.2s;
 }
 
+/* Button */
+#btn-send {
+  height: 3.5rem;
+}
+
+#btn-send:hover > p {
+  font-weight: 700;
+}
+
+#container-contact {
+  position: fixed;
+  z-index: 10;
+  top: 9rem;
+  padding-left: 0.5rem; /* 8px */
+  padding-right: 0.5rem; /* 8px */
+  padding-top: 0.75rem; /* 12px */
+  padding-bottom: 0.75rem; 
+  border-radius: 0.25rem;
+  transform: translateX(-50%);
+  transition-duration: 700ms;
+}
+
 .box-input {
   width: 100%;
   height: 2.5rem;
@@ -147,13 +164,6 @@ input:focus, textarea:focus, .hover-glow:hover {
   height: 7rem;
 }
 
-#btn-send {
-  height: 3.5rem;
-}
-
-#btn-send:hover > p {
-  font-weight: 700;
-}
 .border-blur {
   box-shadow: 0px 0px 4px 3px rgba(255,204,0,0.4),
         inset 0px 0px 4px 3px rgba(255,204,0,0.4);
