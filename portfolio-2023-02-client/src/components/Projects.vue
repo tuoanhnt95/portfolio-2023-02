@@ -9,7 +9,7 @@
           <a :href="project.url" target="_blank" rel="noopener noreferrer" :class="{ 'pointer-events-none' : project.url.length === 0 }">
             <div class="card-background bg-zinc-900" :class="{'background-expand' : highlightedProject === i}"></div>
       
-            <div class="img-project card-category" :class="{'card-category-hover': highlightedProject === i}" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}">
+            <div class="img-project card-category" :class="{'card-category-hover': highlightedProject === i}" :style="{ backgroundImage: `url(${project.image})`}">
               <div class="card-content" :class="{'card-content-hover': highlightedProject === i}">
                 <p>
                   Team: {{ project.members }}
