@@ -2,11 +2,12 @@
   <div class="w-screen bg-black text-yellow-500 overflow-x-hidden">
     <Menu class="fixed z-20 w-screen text-base font-lato tracking-wider"/>
 
-    <header class="h-[55vh] overfow-hidden">
-      <div :class="{ 'banner-opacity': contactFormIsShown }" class="h-full">
-        <img alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom': contactFormIsShown }" class="img-banner ml-[-25%] xs:ml-0 object-cover min-w-[125%] xs:min-w-full h-full opacity-50"/>
+    <header class="h-[55vh] overflow-hidden">
+      <div :class="{ 'banner-opacity-out': contactFormIsShown, 'banner-opacity-in': !contactFormIsShown && isNotJustReloaded }" class="h-full">
+        <img alt="Oanh's sideface photo with sparkly eyes" loading="lazy" src="src/assets/images/sideface.JPG" :class="{ 'banner-zoom-out': contactFormIsShown, 'banner-zoom-in': !contactFormIsShown && isNotJustReloaded }" class="img-banner ml-[-25%] xs:ml-0 object-cover min-w-[125%] xs:min-w-full h-full opacity-50"/>
       </div>
-      <div class="absolute top-1/4 left-1/4 xs:left-[45%] sm:left-1/2" :class="{ 'content-fade': contactFormIsShown }">
+      <div class="absolute top-1/4 left-1/4 xs:left-[45%] sm:left-1/2" :class="{ 'content-fade': contactFormIsShown, 'content-fade-in': !contactFormIsShown && isNotJustReloaded }
+      ">
         <p class="text-8xl md:text-9xl tracking-wide font-playfair-bold">Oanh</p>
         <div class="mx-4 xs:mx-2 my-2 text-base xs:text-lg sm:text-xl drop-shadow-lg tracking-wide">
           <strong>Full-stack</strong> developer with an eye for new <strong>challenges</strong>
@@ -36,9 +37,15 @@ import Footer from './components/Footer.vue'
 const stackIds = ref([])
 
 let contactFormIsShown = ref(false);
+let isNotJustReloaded = ref(false);
 const toggleContactForm = () => {
-  contactFormIsShown.value = !contactFormIsShown.value;
-  console.log(contactFormIsShown.value);
+  if (contactFormIsShown.value) {
+    document.getElementById('container-contact')?.classList.add('content-fade-slow')
+    contactFormIsShown.value = !contactFormIsShown.value;
+  } else {
+    isNotJustReloaded.value = true;
+    contactFormIsShown.value = !contactFormIsShown.value;
+  } 
 }
 
 </script>
@@ -76,7 +83,7 @@ const toggleContactForm = () => {
 /* Banner */
 @media (min-width: 475px) {
   .img-banner {
-    object-position: top 20% left 100%;
+    object-position: top 20% left 50%;
   }
 }
 @media (min-width: 1024px) {
@@ -150,41 +157,26 @@ const toggleContactForm = () => {
   width: 100%;
 }
 
-.wrapper {
-  padding-top: 104px;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 64rem;
-  text-align: right;
-  position: relative;
-}
-
-/* h1 {
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 7.5em;
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 1.5em;
-  opacity: .9;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-  margin-top: 8px;
-} */
-
-.banner-zoom {
+/* Banner */
+.banner-zoom-out {
   transition: all 2.5s ease-in-out;
   transform: perspective(500px) translateZ(450px) translateY(10%) translateX(16%);
 }
 
-.banner-opacity {
+.banner-zoom-in {
+  transition: all 2.5s ease-in-out;
+  transform: perspective(-500px) translateZ(-450px) translateY(-10%) translateX(-16%);
+}
+
+.banner-opacity-out {
   transition: opacity 2.5s;
   background-color: black;
   opacity: 0.1;
 }
 
-.content-fade {
-  transition: opacity 1s ease-in-out;
-  opacity: 0;
+.banner-opacity-in {
+  transition: opacity 2.5s;
+  background-color: black;
+  opacity: 1;
 }
 </style>

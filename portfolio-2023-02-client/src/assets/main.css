@@ -19,6 +19,7 @@
   opacity: 1;
 }
 
+/* --- Transition --- */
 @media (hover: hover) {
   .hover-glow:hover {
     cursor: pointer;
@@ -27,34 +28,18 @@
     font-weight: 700;
   }
 }
-/* #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  font-weight: normal;
+
+.content-fade {
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+content-fade-slow {
+  transition: opacity 5s ease-in-out;
+  opacity: 0;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+content-fade-in {
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
 }
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-} */
