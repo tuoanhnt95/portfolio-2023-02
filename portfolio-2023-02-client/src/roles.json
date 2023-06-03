@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1
+        ,"name": "Tech lead" 
+    }
+    ,{
+        "id": 2
+        ,"name": "Full stack"
+        ,"displayName": "Full" 
+    }
+    ,{
+        "id": 3
+        ,"name": "Front end"
+        ,"displayName": "Front" 
+    }
+    ,{
+        "id": 4
+        ,"name": "Back end"
+        ,"displayName": "Back" 
+    }
+    ,{
+        "id": 5
+        ,"name": "DevOps"
+        ,"displayName": "DevOps" 
+    }
+]

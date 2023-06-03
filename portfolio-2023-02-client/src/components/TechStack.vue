@@ -4,9 +4,9 @@
       Filter 
       <font-awesome-icon icon="fa-solid fa-filter" class="self-center ml-1" />
     </div>
-    <div v-for="(stack, i) in stacks" :key="i" class="flex">
-      <div class="btn-stack hover-glow" :class="{ selected: stack.select }" @click="filterStack(stack)">
-        {{ stack.name }}
+    <div v-for="(status, i) in stackStatus" :key="i" class="flex">
+      <div class="btn-stack hover-glow" :class="{ selected: status.select }" @click="filterStack(status)">
+        {{ getStackNameByStatus(status) }}
       </div>
       <div v-if="[2,7].includes(i)" class="md:w-4"></div>
     </div>
@@ -14,48 +14,54 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { defineEmits } from 'vue'
+import { computed, ref, defineEmits } from 'vue'
+import stackData from '../stacks.json'
 
- const stacks = ref([
+ const stackStatus = ref([
   //0 
-  {name: 'ruby on rails', select: false}, 
+  {id: 1, select: false}, 
   //1
-  {name: 'python', select: false}, 
+  {id: 2, select: false}, 
   //2
-  {name: 'c#', select: false},
+  {id: 3, select: false},
   //3
-  {name: 'javascript', select: false},
+  {id: 4, select: false},
   //4
-  {name: 'typescript', select: false},
+  {id: 5, select: false},
   //5
-  {name: 'vue.js', select: false},
+  {id: 6, select: false},
   //6
-  {name: 'bootstrap', select: false},
+  {id: 7, select: false},
   //7
-  {name: 'tailwind', select: false},
+  {id: 8, select: false},
   //8
-  {name: 'SQLServer', select: false},
+  {id: 9, select: false},
   //9
-  {name: 'PostgreSQL', select: false},
+  {id: 10, select: false},
   //10
-  {name: 'SQLite', select: false}
+  {id: 11, select: false}
  ])
 
-const filteredStackIndexes = computed(() => {
-  return stacks.value.filter(stack => stack.select).map(stack => stacks.value.indexOf(stack))
+const filteredStackIds = computed(() => {
+  return stackStatus.value.filter(stack => stack.select).map(stack => stack.id)
 })
 
 const emit = defineEmits(['filter-stack'])
 
-function filterStack (stack: any) {
-  toggleFilter(stack)
-  emit('filter-stack', filteredStackIndexes.value)
+function filterStack (status: any) {
+  toggleFilter(status)
+  emit('filter-stack', filteredStackIds.value)
 }
 
-function toggleFilter(stack: any) {
-  stack.select = !stack.select
-  console.log(stack)
+function toggleFilter(status: any) {
+  status.select = !status.select
+  console.log(status)
+}
+
+function getStackNameByStatus(status: any) {
+  const stack = stackData.find(stack => stack.id === status.id)
+  if (!stack) return ''
+  return stack.displayName ? stack.displayName : stack.name
 }
 </script>
 

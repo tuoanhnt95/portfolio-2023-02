@@ -18,8 +18,8 @@
 
       <ContactForm v-if="contactFormIsShown" @toggle-form="toggleContactForm()"/>
     </header>
-    <TechStack @filter-stack="(filteredStackIndexes: any) => filteredStacksInds = filteredStackIndexes" class="flex justify-center mt-1 mb-4"/>
-    <Projects :filtered-indexes="filteredStacksInds" class="flex justify-center mb-16"/>
+    <TechStack @filter-stack="(filteredStackIds: any) => stackIds = filteredStackIds" class="flex justify-center mt-1 mb-4"/>
+    <Projects :filtered-ids="stackIds" class="flex justify-center mb-16"/>
     <Footer class="inset-x-0 bottom-0"/>
   </div>
 </template>
@@ -33,7 +33,7 @@ import ContactForm from './components/ContactForm.vue'
 import Projects from './components/Projects.vue'
 import Footer from './components/Footer.vue'
 
-const filteredStacksInds = ref([])
+const stackIds = ref([])
 
 let contactFormIsShown = ref(false);
 const toggleContactForm = () => {
