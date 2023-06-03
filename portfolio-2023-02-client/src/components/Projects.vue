@@ -9,13 +9,13 @@
           <div :id="`card-project${i}`" class="card-background bg-zinc-900"></div>
           <div class="img-project" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}"></div>
           <div class="mt-1 flex">
-            <IconRole :role='roles[project.role]'/>
+            <IconRole :role='getRoleNameByProject(project)'/>
             <div class="ml-2">
               <div class="font-bold">
                 {{ project.name }}
               </div>
               <div class="text-xs" >
-                {{ getStacksByProjectIndex(i) }}
+                {{ getStacksByProject(project) }}
               </div>
             </div>
           </div>
@@ -28,87 +28,32 @@
 <script setup lang="ts">
 import { computed, defineProps } from 'vue'
 import IconRole from './IconRole.vue'
+import stackData from '../stacks.json'
+import projectData from '../projects.json'
+import roleData from '../roles.json'
+
 const props = defineProps({
-  filteredIndexes: {
+  filteredIds: {
     type: Array,
     required: true
   }
 })
-const stacks = [
-  //0 
-  {name: 'ruby on rails', displayName: 'rails', select: false}, 
-  //1
-  {name: 'python', select: false}, 
-  //2
-  {name: 'c#', select: false},
-  //3
-  {name: 'javascript', select: false},
-  //4
-  {name: 'typescript', select: false},
-  //5
-  {name: 'vue.js', select: false},
-  //6
-  {name: 'bootstrap', select: false},
-  //7
-  {name: 'tailwind', select: false},
-  //8
-  {name: 'SQLServer', select: false},
-  //9
-  {name: 'PostgreSQL', select: false},
-  //10
-  {name: 'SQLite', select: false}
-]
 
-const roles = ['Tech lead', 'Pers.', 'Front', 'Back', 'Full']
-
-const projects = [
-  {
-    name: 'HealthWay',
-    description: 'Decent description of the app',
-    image: 'healthway.jpg',
-    url: 'http://www.healthway.live/',
-    stack: [0, 3, 6, 9],
-    role: 0
-  }, {
-    name: 'PlayerWon',
-    description: 'Decent description of the app',
-    image: 'playerwon.jpg',
-    url: 'https://player-won.herokuapp.com/',
-    stack: [0, 3, 6, 10],
-    role: 0
-  }, {
-    name: 'Movie Watch List',
-    description: 'Decent description of the app',
-    image: 'movie-watch-list.jpg',
-    url: 'https://www.google.com',
-    stack: [0, 3],
-    role: 1
-  }, {
-    name: 'Line Chatbot',
-    description: 'Decent description of the app',
-    image: 'line-chat-bot.jpeg',
-    url: '#',
-    stack: [0, 3],
-    role: 1
-  },
-  {
-    name: `Health Management Diagram`,
-    description: `Interactive diagram to show companies' obligations with their employees' health in Japan`,
-    image: 'line-chat-bot.jpeg',
-    url: 'https://www.htm.co.jp/health-management-calculator.html',
-    stack: [2, 3, 5, 8],
-    role: 2
-  }
-]
-
-function getStacksByProjectIndex(i: number) {
-  const project = projects[i]
-  const stacksByProjectIndex = project.stack.map((stackIndex: number) => getStackDisplayName(stacks[stackIndex])).join(', ')
-  return stacksByProjectIndex
+function getStacksByProject(project: any) {
+  return stackData
+    .filter((stack: any) => project.stack.includes(stack.id))
+    .map((stack: any) => getDisplayName(stack))
+    .join(', ')
 }
 
-function getStackDisplayName(stack: any) {
-  return stack.displayName ? capitalizeFirstLetter(stack.displayName) : capitalizeFirstLetter(stack.name)
+function getDisplayName(object: any) {
+  return object.displayName ? capitalizeFirstLetter(object.displayName) : capitalizeFirstLetter(object.name)
+}
+
+function getRoleNameByProject(project: any) {
+  const result = roleData.find((role: any) => role.id === project.role)
+  if (!result) return ''
+  return getDisplayName(result)
 }
 
 function capitalizeFirstLetter(string: string) {
@@ -116,13 +61,13 @@ function capitalizeFirstLetter(string: string) {
 }
 
 const filteredProjects = computed(() => {
-  if (props.filteredIndexes.length === 0) {
-    return projects
+  if (props.filteredIds.length === 0) {
+    return projectData
   } 
-  return projects.filter((project: any) => {
-  // get project.stack for the indexs
-  // check if that index is in the filteredIndexes array
-    let result = project.stack.filter((stackIndex: number) => props.filteredIndexes.includes(stackIndex))
+  return projectData.filter((project: any) => {
+  // get project.stack for the ids
+  // check if that id is in the filteredIds array
+    let result = project.stack.filter((stackId: number) => props.filteredIds.includes(stackId))
     return result.length > 0
   })
 }) 
