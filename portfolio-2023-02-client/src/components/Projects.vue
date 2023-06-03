@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <div class="xs:mt-6 mb-8 text-2xl lg:text-3xl xl:text-4xl font-playfair-bold">
-        My Projects
+      <div class="flex flex-start xs:mt-6 mb-8 text-2xl lg:text-3xl xl:text-4xl font-playfair-bold">
+        My Projects ({{ filteredProjects.length  }})
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
         <div v-for="(project, i) in filteredProjects" :key="i" @mouseenter="highlightBackground(i)" @mouseleave="unhighlightBackground(i)">
@@ -59,7 +59,7 @@ const stacks = [
   {name: 'SQLite', select: false}
 ]
 
-const roles = ['Tech lead', 'Pers.']
+const roles = ['Tech lead', 'Pers.', 'Front', 'Back', 'Full']
 
 const projects = [
   {
@@ -87,9 +87,17 @@ const projects = [
     name: 'Line Chatbot',
     description: 'Decent description of the app',
     image: 'line-chat-bot.jpeg',
-    url: 'https://www.google.com',
+    url: '#',
     stack: [0, 3],
     role: 1
+  },
+  {
+    name: `Health Management Diagram`,
+    description: `Interactive diagram to show companies' obligations with their employees' health in Japan`,
+    image: 'line-chat-bot.jpeg',
+    url: 'https://www.htm.co.jp/health-management-calculator.html',
+    stack: [2, 3, 5, 8],
+    role: 2
   }
 ]
 
