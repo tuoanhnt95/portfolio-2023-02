@@ -36,7 +36,7 @@
       "id": 5,
       "name": "Health Management Diagram",
       "description": "Interactive diagram to show companies's obligations with their employees's health in Japan",
-      "image": "line-chat-bot.jpeg",
+      "image": "healthMngment.png",
       "url": "https://www.htm.co.jp/health-management-calculator.html",
       "stack": [3, 4, 6, 9],
       "role": 3
