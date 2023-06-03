@@ -1,44 +1,49 @@
 [
     {
-      "id": 1,
-      "name": "HealthWay",
-      "description": "Decent of the app",
-      "image": "healthway.jpg",
-      "url": "http://www.healthway.live/",
-      "stack": [1, 4, 7, 10],
-      "role": 1
+      "id": 1
+      ,"name": "HealthWay"
+      ,"description": "For HR managers and employees to manage their annual required healthcheck in Japan"
+      ,"image": "healthway.jpg"
+      ,"url": "http://www.healthway.live/"
+      ,"stack": [1, 4, 7, 10]
+      ,"role": 1
+      ,"members": 4
     }, {
-      "id": 2,
-      "name": "PlayerWon",
-      "description": "Decent of the app",
-      "image": "playerwon.jpg",
-      "url": "https://player-won.herokuapp.com/",
-      "stack": [1, 4, 7, 11],
-      "role": 1
+      "id": 2
+      ,"name": "PlayerWon"
+      ,"description": "For gamers to find coaches and e-sport coaches to find students"
+      ,"image": "playerwon.jpg"
+      ,"url": "https://player-won.herokuapp.com/"
+      ,"stack": [1, 4, 7, 11]
+      ,"role": 1
+      ,"members": 4
     }, {
-      "id": 3,
-      "name": "Movie Watch List",
-      "description": "Decent of the app",
-      "image": "movie-watch-list.jpg",
-      "url": "",
-      "stack": [1, 4],
-      "role": 2
+      "id": 3
+      ,"name": "Movie Watch List"
+      ,"description": "[Under revision] An old-school cinema-feel movie watch list app. Users search for movies and add them to their watch list."
+      ,"image": "movie-watch-list.jpg"
+      ,"url": ""
+      ,"stack": [1, 4]
+      ,"role": 2
+      ,"members": 1
     }, {
-      "id": 4,
-      "name": "Line Chatbot",
-      "description": "Decent of the app",
-      "image": "line-chat-bot.jpeg",
-      "url": "",
-      "stack": [1, 4],
-      "role": 2
+      "id": 4
+      ,"name": "Line Chatbot"
+      ,"description": "[Under revision] Chat on Line with Pikachu. Under development to incorporate ChatGPT."
+      ,"image": "line-chat-bot.jpeg"
+      ,"url": ""
+      ,"stack": [1, 4]
+      ,"role": 2
+      ,"members": 1
     },
     {
-      "id": 5,
-      "name": "Health Management Diagram",
-      "description": "Interactive diagram to show companies's obligations with their employees's health in Japan",
-      "image": "healthMngment.png",
-      "url": "https://www.htm.co.jp/health-management-calculator.html",
-      "stack": [3, 4, 6, 9],
-      "role": 3
+      "id": 5
+      ,"name": "Health Management Diagram"
+      ,"description": "Companies in Japan are legally required to ensure a safe and healthy work environment. The interactive diagram shows health management requirements based on company's size and industry."
+      ,"image": "healthMngment.png"
+      ,"url": "https://www.htm.co.jp/health-management-calculator.html"
+      ,"stack": [3, 4, 6, 9]
+      ,"role": 3
+      ,"members": 2
     }
 ]
