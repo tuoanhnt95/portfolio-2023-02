@@ -7,9 +7,18 @@
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
         <div v-for="(project, i) in filteredProjects" :key="i" @mouseenter="highlightBackground(i)" @mouseleave="unhighlightBackground(i)">
           <a :href="project.url" target="_blank" rel="noopener noreferrer" :class="{ 'pointer-events-none' : project.url.length === 0 }">
-            <div :id="`card-project${i}`" class="card-background bg-zinc-900"></div>
+            <div class="card-background bg-zinc-900" :class="{'background-expand' : highlightedProject === i}"></div>
       
-            <div class="img-project" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}"></div>
+            <div class="img-project card-category" :class="{'card-category-hover': highlightedProject === i}" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}">
+              <div class="card-content" :class="{'card-content-hover': highlightedProject === i}">
+                <p>
+                  Team: {{ project.members }}
+                </p>
+                <p>
+                  {{ project.description }}
+                </p>
+              </div>
+            </div>
           
             <div class="mt-1 flex">
               <IconRole :role='getRoleNameByProject(project)'/>
@@ -30,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { computed, defineProps, ref } from 'vue'
 import IconRole from './IconRole.vue'
 import stackData from '../stacks.json'
 import projectData from '../projects.json'
@@ -69,27 +78,37 @@ const filteredProjects = computed(() => {
     return projectData
   } 
   return projectData.filter((project: any) => {
-  // get project.stack for the ids
-  // check if that id is in the filteredIds array
     let result = project.stack.filter((stackId: number) => props.filteredIds.includes(stackId))
     return result.length > 0
   })
 }) 
 
+// highlight
+const highlightedProject = ref(-1)
 function highlightBackground(i: number) {
-  const card = document.getElementById(`card-project${i}`)
-  card?.classList.add('background-expand')
+  highlightedProject.value = i
+  // const card = document.getElementById(`card-project${i}`)
+  // card?.classList.add('background-expand')
 }
 
 function unhighlightBackground(i: number) {
-  const card = document.getElementById(`card-project${i}`)
-  card?.classList.remove('background-expand')
+  highlightedProject.value = -1
+  // const card = document.getElementById(`card-project${i}`)
+  // card?.classList.remove('background-expand')
 }
 </script>
 
 <style scoped>
 @import '../assets/main.css';
 
+* {
+  --d: 700ms;
+  --e: cubic-bezier(0.19, 1, 0.22, 1);
+  --bp-md: 600px;
+  --bp-lg: 800px;
+}
+
+/* Fonts */
 @font-face {
   font-family: "PlayfairBold";
   src: local('Playfair'), url('./assets/fonts/PlayfairDisplay/PlayfairDisplay-Black.ttf') format('truetype');
@@ -130,5 +149,63 @@ function unhighlightBackground(i: number) {
 .background-expand {
   clip-path: none;
 }
+
+/* description */
+.card-category {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.card-category:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-position: 0 0;
+  pointer-events: none;
+}
+
+.card-category:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.card-category-hover:after {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 1rem;
+  opacity: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,1);
+  transition: transform var(--d) var(--e);
+}
+
+.card-content-hover {
+  opacity: 1;
+  transform: translateY(-1rem);
+  transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+}
+
+.card-category-hover,
+.card-category-hover:before,
+.card-category-hover:after,
+.card-content-hover {
+  transition-duration: var(--d);
+  transition-delay: calc(var(--d) / 8);
+}  
 </style>
   
