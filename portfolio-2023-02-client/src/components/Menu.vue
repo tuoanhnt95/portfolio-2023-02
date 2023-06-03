@@ -1,9 +1,11 @@
 <template>
-  <div class="flex justify-end z-10 xs:text-lg bg-transparent-top-layer">
-    <div class="mr-3">
-      <button v-for="(item, i) in menuItems" :key="i" class="mx-3 xs:mx-4 lg:mx-5 my-2 xs:my-3 lg:my-4 hover-glow font-sans">
-        {{ item.name }}
-      </button>
+  <div class="z-10 h-12 pr-2 md:pr-4 lg:pr-8 xs:text-lg bg-transparent-top-layer">
+    <div class="flex justify-end pt-3">
+      <div v-for="(item, i) in menuItems" :key="i" class="flex justify-center xs:w-24 md:w-28 px-2">
+        <button class="hover-glow font-sans">
+          {{ item.name }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
