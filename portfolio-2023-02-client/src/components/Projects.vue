@@ -6,19 +6,23 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
         <div v-for="(project, i) in filteredProjects" :key="i" @mouseenter="highlightBackground(i)" @mouseleave="unhighlightBackground(i)">
-          <div :id="`card-project${i}`" class="card-background bg-zinc-900"></div>
-          <div class="img-project" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}"></div>
-          <div class="mt-1 flex">
-            <IconRole :role='getRoleNameByProject(project)'/>
-            <div class="ml-2">
-              <div class="font-bold">
-                {{ project.name }}
-              </div>
-              <div class="text-xs" >
-                {{ getStacksByProject(project) }}
+          <a :href="project.url" target="_blank" rel="noopener noreferrer" :class="{ 'pointer-events-none' : project.url.length === 0 }">
+            <div :id="`card-project${i}`" class="card-background bg-zinc-900"></div>
+      
+            <div class="img-project" :style="{ backgroundImage: `url(${ 'src/assets/images/' + project.image})`}"></div>
+          
+            <div class="mt-1 flex">
+              <IconRole :role='getRoleNameByProject(project)'/>
+              <div class="ml-2">
+                <div class="font-bold">
+                  {{ project.name }}
+                </div>
+                <div class="text-xs" >
+                  {{ getStacksByProject(project) }}
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
