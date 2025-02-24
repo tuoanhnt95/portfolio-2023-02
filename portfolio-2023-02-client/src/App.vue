@@ -14,9 +14,14 @@
           <strong>Writer</strong> & <strong>Software Developer</strong>
         </div>
         <div class="flex justify-end mt-3">
-          <button class="mx-4 xs:mx-2 my-3 btn-yellow-glow btn-8" @click="toggleContactForm()">
-            <span class="px-8 text-xl">Contact me</span>
-          </button>
+          <a href="https://forms.gle/2q1zfuv4gibfzxYw9"
+            target="_blank"
+          >
+            <button class="mx-4 xs:mx-2 my-3 btn-yellow-glow btn-8">
+            <!-- <button class="mx-4 xs:mx-2 my-3 btn-yellow-glow btn-8" @click="toggleContactForm()"> -->
+              <span class="px-8 text-xl">Subscribe</span>
+            </button>
+          </a>
         </div>
       </div>
 
