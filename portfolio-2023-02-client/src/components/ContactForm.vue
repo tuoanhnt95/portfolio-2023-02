@@ -4,7 +4,7 @@
       <div class="flex justify-center px-2 py-4">
         <div>
           <div class="flex space-x-4 mb-2 ml-1 text-3xl font-bold text-center">
-            <a href="mailto:tuoanhnt95@gmail.com?subject=IT Contact request&body=Hi Oanh! This is ... Would love to chat with you about ... Are you available on ...? Looking forwards to hearing from you.">
+            <a href="mailto:oanhheckofastory@gmail.com?subject=Contact request&body=Hi Oanh! This is ... Would love to chat with you about ... Are you available on ...? Looking forwards to hearing from you.">
               <font-awesome-icon icon="fa-regular fa-envelope" />
             </a>
             <a href="https://www.linkedin.com/in/oanhnguyenthitu/" target="_blank">
@@ -25,7 +25,7 @@
               <p>Thank you for reaching out! I will be in touch within three business days.</p>
             </div>
             <div v-if="failSubmit">
-              <p>I am sorry, the email did not go through. Please email me: tuoanhnt95@gmail.com</p>
+              <p>I am sorry, the email did not go through. Please email me: oanhheckofastory@gmail.com</p>
             </div>
           </div>
           <div class="absolute top-0 right-1 cursor-pointer" @click="closeForm">
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, defineEmits } from 'vue'
+import { computed, ref } from 'vue'
 import type { Ref } from 'vue';
 import axios from 'axios';
 
@@ -138,7 +138,7 @@ input:focus, textarea:focus, .hover-glow:hover {
   padding-left: 0.5rem; /* 8px */
   padding-right: 0.5rem; /* 8px */
   padding-top: 0.75rem; /* 12px */
-  padding-bottom: 0.75rem; 
+  padding-bottom: 0.75rem;
   border-radius: 0.25rem;
   transform: translateX(-50%);
   transition-duration: 700ms;

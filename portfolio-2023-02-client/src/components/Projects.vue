@@ -8,7 +8,7 @@
         <div v-for="(project, i) in filteredProjects" :key="i" @mouseenter="highlightBackground(i)" @mouseleave="unhighlightBackground(i)">
           <a :href="project.url" target="_blank" rel="noopener noreferrer" :class="{ 'pointer-events-none' : project.url.length === 0 }">
             <div class="card-background bg-zinc-900" :class="{'background-expand' : highlightedProject === i}"></div>
-      
+
             <div class="img-project card-category" :class="{'card-category-hover': highlightedProject === i}" :style="{ backgroundImage: `url(${project.image})`}">
               <div class="card-content" :class="{'card-content-hover': highlightedProject === i}">
                 <p>
@@ -19,7 +19,7 @@
                 </p>
               </div>
             </div>
-          
+
             <div class="mt-1 flex">
               <IconRole :role='getRoleNameByProject(project)'/>
               <div class="ml-2">
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, ref } from 'vue'
+import { computed, ref } from 'vue'
 import IconRole from './IconRole.vue'
 import stackData from '../stacks.json'
 import projectData from '../projects.json'
@@ -76,12 +76,12 @@ function capitalizeFirstLetter(string: string) {
 const filteredProjects = computed(() => {
   if (props.filteredIds.length === 0) {
     return projectData
-  } 
+  }
   return projectData.filter((project: any) => {
     let result = project.stack.filter((stackId: number) => props.filteredIds.includes(stackId))
     return result.length > 0
   })
-}) 
+})
 
 // highlight
 const highlightedProject = ref(-1)
@@ -116,7 +116,7 @@ function unhighlightBackground(i: number) {
 
 .font-playfair-bold {
   font-family: 'PlayfairBold', serif;
-} 
+}
 
 .img-project {
   background-size: cover;
@@ -206,6 +206,5 @@ function unhighlightBackground(i: number) {
 .card-content-hover {
   transition-duration: var(--d);
   transition-delay: calc(var(--d) / 8);
-}  
+}
 </style>
-  
